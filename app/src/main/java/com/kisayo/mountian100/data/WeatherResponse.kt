@@ -1,4 +1,4 @@
-package com.kisayo.mountian100
+package com.kisayo.mountian100.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -7,7 +7,8 @@ import kotlinx.android.parcel.Parcelize
 data class WeatherResponse(
     val main: Main,
     val weather: List<Weather>,
-    val wind: Wind
+    val wind: Wind,
+    val pop: Double
 ) : Parcelable
 
 @Parcelize
@@ -24,7 +25,8 @@ data class Weather(
     val id: Int,
     val main: String,
     val description: String,
-    val icon: String
+    val icon: String,
+    val pop: Double
 ) : Parcelable
 
 @Parcelize
@@ -42,7 +44,8 @@ data class HourlyForecastResponse(
         val dt: Long,
         val main: Main,
         val weather: List<Weather>,
-        val wind: Wind
+        val wind: Wind,
+        val pop: Double
     ) : Parcelable
 }
 
@@ -55,7 +58,8 @@ data class WeeklyForecastResponse(
     data class WeeklyWeatherItem(
         val dt: Long,
         val temp: Temperature,
-        val weather: List<Weather>
+        val weather: List<Weather>,
+        val pop: Double
     ) : Parcelable
 
     @Parcelize
@@ -64,4 +68,10 @@ data class WeeklyForecastResponse(
         val min: Double,
         val max: Double
     ) : Parcelable
+
+    @Parcelize
+    data class Pop(
+        val pop: Double
+    ) : Parcelable
+
 }

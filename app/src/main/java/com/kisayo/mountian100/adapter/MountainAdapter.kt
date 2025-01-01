@@ -1,9 +1,13 @@
-package com.kisayo.mountian100
+package com.kisayo.mountian100.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.kisayo.mountian100.R
+import com.kisayo.mountian100.data.MountainRepository
 import com.kisayo.mountian100.databinding.ItemMountainBinding
+import com.kisayo.mountian100.data.WeatherResponse
 import kotlin.math.roundToInt
 
 class MountainAdapter(
@@ -30,10 +34,22 @@ class MountainAdapter(
                 tvHeight.text = "${String.format("%,d", mountainWithWeather.mountain.height)}m"
 
                 mountainWithWeather.weatherInfo?.let { weather ->
+                    // 날씨 아이콘
+                    val iconCode = weather.weather.firstOrNull()?.icon
+                    if (!iconCode.isNullOrEmpty()) {
+                        val iconUrl = "https://openweathermap.org/img/wn/$iconCode@2x.png"
+                        Glide.with(ivWeatherIcon.context)
+                            .load(iconUrl)
+                            .error(R.drawable.ic_weather_sunny)
+                            .into(ivWeatherIcon)
+                    }
+
+                    // 날씨 정보 표시
                     tvTemperature.text = "${weather.main.temp.roundToInt()}°C"
                     tvWeatherDesc.text = weather.weather.firstOrNull()?.description
                     tvHumidity.text = "${weather.main.humidity}%"
                     tvWindSpeed.text = "${weather.wind.speed}m/s"
+                    tvRainProbability.text = "${(weather.pop * 100).roundToInt()}%"
                 }
             }
         }

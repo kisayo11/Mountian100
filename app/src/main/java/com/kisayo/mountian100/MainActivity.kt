@@ -1,16 +1,14 @@
 package com.kisayo.mountian100
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kisayo.mountian100.adapter.MountainAdapter
 import com.kisayo.mountian100.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,9 +1,10 @@
-package com.kisayo.mountian100
+package com.kisayo.mountian100.data
 
 import android.content.Context
 import android.os.Parcelable
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.kisayo.mountian100.R
 import kotlinx.android.parcel.Parcelize
 
 class MountainRepository(private val context: Context) {

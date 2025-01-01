@@ -1,26 +1,28 @@
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="3dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="16dp">
+        android:background="@drawable/gradient_background"
+        android:padding="20dp">
 
-        <!-- 산 이름과 고도 -->
+        <!-- 첫째 줄: 산 이름, 고도, 날씨아이콘, 온도 -->
         <TextView
             android:id="@+id/tvMountainName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:fontFamily="@font/pretendard_bold"
             android:textSize="36sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="지리산" />
@@ -29,108 +31,124 @@
             android:id="@+id/tvHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/gray"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/rounded_rectangle_background"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:fontFamily="@font/pretendard_medium"
             android:textSize="14sp"
+            android:textColor="@color/dark_gray"
             app:layout_constraintBottom_toBottomOf="@id/tvMountainName"
             app:layout_constraintStart_toEndOf="@id/tvMountainName"
             tools:text="1,915m" />
 
-        <!-- 날씨 아이콘 -->
         <ImageView
             android:id="@+id/ivWeatherIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMountainName"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvMountainName"
+            app:layout_constraintStart_toEndOf="@id/tvHeight"
+            app:layout_constraintTop_toTopOf="@id/tvMountainName"
             tools:src="@drawable/ic_weather_sunny" />
 
-        <!-- 온도 정보 -->
         <TextView
             android:id="@+id/tvTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/pretendard_bold"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/ivWeatherIcon"
             app:layout_constraintStart_toEndOf="@id/ivWeatherIcon"
             app:layout_constraintTop_toTopOf="@id/ivWeatherIcon"
             tools:text="15°C" />
 
-        <!-- 날씨 설명 -->
+        <!-- 구분선 -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/tvMountainName" />
+
+        <!-- 둘째 줄: 날씨 설명과 아이콘들 -->
         <TextView
             android:id="@+id/tvWeatherDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:textColor="@color/gray"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/tvTemperature"
-            app:layout_constraintStart_toEndOf="@id/tvTemperature"
-            app:layout_constraintTop_toTopOf="@id/tvTemperature"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/pretendard_medium"
+            android:textColor="@color/dark_gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             tools:text="맑음" />
 
-        <!-- 구분선 -->
-        <View
-            android:id="@+id/divider"
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
-            android:background="@color/light_gray"
-            app:layout_constraintBottom_toBottomOf="@id/ivWeatherIcon"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/tvWeatherDesc"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvWeatherDesc"
-            app:layout_constraintTop_toTopOf="@id/ivWeatherIcon" />
+            app:layout_constraintTop_toTopOf="@id/tvWeatherDesc">
 
-        <!-- 습도 아이콘과 정보 -->
-        <ImageView
-            android:id="@+id/ivHumidity"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_weather_sunny"
-            app:layout_constraintBottom_toBottomOf="@id/ivWeatherIcon"
-            app:layout_constraintStart_toEndOf="@id/divider"
-            app:layout_constraintTop_toTopOf="@id/ivWeatherIcon"
-            app:tint="@color/blue_gray" />
+            <ImageView
+                android:id="@+id/ivHumidity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/hygrometer_48"
+                app:tint="@color/blue_gray" />
 
-        <TextView
-            android:id="@+id/tvHumidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/gray"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivHumidity"
-            app:layout_constraintStart_toEndOf="@id/ivHumidity"
-            app:layout_constraintTop_toTopOf="@id/ivHumidity"
-            tools:text="75%" />
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:textSize="14sp"
+                tools:text="75%" />
 
-        <!-- 풍속 아이콘과 정보 -->
-        <ImageView
-            android:id="@+id/ivWind"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_weather_sunny"
-            app:layout_constraintBottom_toBottomOf="@id/ivWeatherIcon"
-            app:layout_constraintStart_toEndOf="@id/tvHumidity"
-            app:layout_constraintTop_toTopOf="@id/ivWeatherIcon"
-            app:tint="@color/blue_gray" />
+            <ImageView
+                android:id="@+id/ivWind"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/wind_48"
+                app:tint="@color/blue_gray" />
 
-        <TextView
-            android:id="@+id/tvWindSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:textColor="@color/gray"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivWind"
-            app:layout_constraintStart_toEndOf="@id/ivWind"
-            app:layout_constraintTop_toTopOf="@id/ivWind"
-            tools:text="3m/s" />
+            <TextView
+                android:id="@+id/tvWindSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:textSize="14sp"
+                tools:text="3m/s" />
+
+            <ImageView
+                android:id="@+id/ivRain"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/wet_48"
+                app:tint="@color/blue_gray" />
+
+            <TextView
+                android:id="@+id/tvRainProbability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/pretendard_medium"
+                android:textSize="14sp"
+                tools:text="30%" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

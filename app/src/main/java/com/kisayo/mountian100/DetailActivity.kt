@@ -1,19 +1,16 @@
 package com.kisayo.mountian100
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButtonToggleGroup
+import com.kisayo.mountian100.adapter.HourlyWeatherAdapter
+import com.kisayo.mountian100.adapter.WeeklyWeatherAdapter
+import com.kisayo.mountian100.data.MountainRepository
 import com.kisayo.mountian100.databinding.ActivityDetailBinding
+import com.kisayo.mountian100.network.ApiClient
+import com.kisayo.mountian100.data.WeatherResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

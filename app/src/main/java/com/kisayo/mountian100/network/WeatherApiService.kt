@@ -1,5 +1,8 @@
-package com.kisayo.mountian100
+package com.kisayo.mountian100.network
 
+import com.kisayo.mountian100.data.HourlyForecastResponse
+import com.kisayo.mountian100.data.WeatherResponse
+import com.kisayo.mountian100.data.WeeklyForecastResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

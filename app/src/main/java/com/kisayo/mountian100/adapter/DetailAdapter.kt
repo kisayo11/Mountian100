@@ -1,11 +1,13 @@
-package com.kisayo.mountian100
+package com.kisayo.mountian100.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.kisayo.mountian100.R
+import com.kisayo.mountian100.data.HourlyForecastResponse
+import com.kisayo.mountian100.data.WeeklyForecastResponse
 import java.sql.Date
 import java.text.SimpleDateFormat
 import java.util.Locale
